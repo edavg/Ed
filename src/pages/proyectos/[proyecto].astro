@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro"
 import { projectData } from "../../components/projectData.astro"
+import { Image } from "astro:assets"
 const { proyecto } = Astro.params
 const info = projectData.find((item)=> item.id === Number(proyecto))
 
@@ -13,7 +14,7 @@ if(!info) return Astro.redirect('/404', 404)
     <section style={`view-transition-name: form`} class="max-w-3xl mx-auto">
         <h1 style={`view-transition-name: title-${info.id} view-transition-name: title`} class="text-center font-bold text-4xl mb-12">{info.title}</h1>
         <p style={`view-transition-name: description-${info.id} view-transition-name: form`} class="text-lg mb-12">{info.description}</p>
-        <img src={info.image}  alt={`Proyecto: ${info.image}`} 
+        <Image width={800} height={600} src={info.image}  alt={`Proyecto: ${info.image}`} 
         class="mx-auto lg:aspect-[600px/800px] rounded hover:shadow-lg transition-all hover:shadow-white cursor-pointer"/
         style={`view-transition-name: image-${info.id}`}>
     </section>
