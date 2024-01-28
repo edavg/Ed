@@ -1,22 +1,41 @@
 ---
-import Layout from "../../layouts/Layout.astro"
-import Projects from "../../components/projects.astro"
-import {projectData} from "../../components/projectData.astro"
+import Layout from "../../layouts/Layout.astro";
+import Projects from "../../components/projects.astro";
+import { projectData } from "../../components/projectData.astro";
 ---
 
 <Layout title="Proyectos">
-    <section class="mx-auto w-11/12">
-        <h3 
-        style={`view-transition-name: title`}
-        class="text-center text-3xl font-bold">
-            Mis proyectos
-        </h3>
-        <div style={`view-transition-name: form`}>
-        {projectData.map(({id, title, description, image, svg1, svg2, svg3})=> {
-         return (
-            <a href={`/proyectos/${id}`}><Projects id={id} title={title} description={description} image={image} svg1={svg1} svg2={svg2} svg3={svg3} /></a>
-        )})
+  <section class="mx-auto w-11/12">
+    <h3
+      style={`view-transition-name: title`}
+      class="text-center text-3xl font-bold"
+    >
+      Mis proyectos
+    </h3>
+    <div style={`view-transition-name: form`}>
+      <ul class="list-none">
+        {
+          projectData.map(
+            ({ id, title, description, image, svg1, svg2, svg3 }) => {
+              return (
+                <li id={String(id)}>
+                  <a href={`/proyectos/${id}`}>
+                    <Projects
+                      id={id}
+                      title={title}
+                      description={description}
+                      image={image}
+                      svg1={svg1}
+                      svg2={svg2}
+                      svg3={svg3}
+                    />
+                  </a>
+                </li>
+              );
+            }
+          )
         }
-        </div>
-    </section>
+      </ul>
+    </div>
+  </section>
 </Layout>

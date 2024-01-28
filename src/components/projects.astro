@@ -1,29 +1,45 @@
 ---
-import { Image } from "astro:assets"
-const { id, title, description, image, svg1, svg2, svg3} = Astro.props
+import { Image } from "astro:assets";
+const { id, title, description, image, svg1, svg2, svg3 } = Astro.props;
 ---
 
-<div class="my-4 ">
-    <div class="hover:scale-[1.01] hover:contrast-125 transition-all cursor-pointer mx-auto lg:flex w-11/12 p-6 rounded-lg justify-between bg-slate-600 bg-opacity-20 border-[1px] border-yellow-50">
-        <div class="flex flex-col justify-between">
-            <div>
-                <h3 
-                style={`view-transition-name: title-${id}`}
-                class="text-2xl font-bold mb-4">{title}</h3>
-                <p style={`view-transition-name: description-${id}`}>{description}</p>
-            </div>
-            
-            <div class="flex gap-x-2">
-                <Image width={20} height={20} src={svg1} alt='svg' />
-                <Image width={20} height={20} src={svg2} alt='svg' />
-                <Image width={20} height={20} src={svg3} alt='svg' />
-            </div>
-        </div>
-        <div class="shadow border-2 border-yellow-50 rounded-lg max-lg:mt-6 filter ">
-            <Image width={400} height={400} src={image} alt='Proyecto' 
-            class="aspect-[400px/400px] rounded-md" 
-            style={`view-transition-name: image-${id}`}/>
-        </div>
-    </div>
+<article class="my-4 max-w-[450px] lg:max-w-full mx-auto">
+  <div
+    class="hover:scale-[1.01] hover:contrast-125 transition-all cursor-pointer mx-auto lg:flex w-11/12 p-6 rounded-lg justify-between bg-slate-600 bg-opacity-20 border-[1px] border-yellow-50"
+  >
+    <div class="flex flex-col justify-between">
+      <div>
+        <h3
+          style={`view-transition-name: title-${id}`}
+          class="text-2xl font-bold mb-4 text-center lg:text-left"
+        >
+          {title}
+        </h3>
+        <p
+          class="hidden lg:block text-pretty max-w-[360px]"
+          style={`view-transition-name: description-${id}`}
+        >
+          {description}
+        </p>
+      </div>
 
-</div>
+      <div style={`view-transition-name: svg-${id}`} class="flex gap-x-2">
+        <Image width={20} height={20} src={svg1} alt="svg" />
+        {svg2 && <Image width={20} height={20} src={svg2} alt="svg" />}
+        {svg3 && <Image width={20} height={20} src={svg3} alt="svg" />}
+      </div>
+    </div>
+    <div
+      class="shadow border-2 border-yellow-50 rounded-lg max-lg:mt-6 filter flex-shrink-0"
+    >
+      <Image
+        width={400}
+        height={400}
+        src={image}
+        alt="Proyecto"
+        class="aspect-[400px/400px] object-cover object-center rounded-md"
+        style={`view-transition-name: image-${id}`}
+      />
+    </div>
+  </div>
+</article>
