@@ -32,14 +32,14 @@ const { id, title, description, image, svg1, svg2, svg3 } = Astro.props;
       </div>
     </div>
     <div
-      class="shadow border-2 border-yellow-50 rounded-lg max-lg:mt-6 filter flex-shrink-0"
+      class="shadow border-2 border-yellow-50 rounded-lg max-lg:mt-6 filter flex-shrink-0 max-h-[420px] lg:max-h-[250px]"
     >
       <Image
         width={400}
-        height={400}
+        height={200}
         src={image}
         alt="Proyecto"
-        class="aspect-[400px/400px] object-cover object-center rounded-md"
+        class="object-cover object-center rounded-md max-h-[200px]"
         style={`view-transition-name: image-${id}`}
       />
     </div>
