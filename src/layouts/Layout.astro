@@ -28,7 +28,7 @@ const { title } = Astro.props;
     </header>
 
     <div class="fixed left-0 top-0 -z-10 h-full w-full">
-      <div class="relative h-full w-full bg-slate-950">
+      <div class="relative h-full w-full bg-slate-950 bg-slate">
         <div
           class="absolute bottom-0 left-[0] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
         >
@@ -45,6 +45,20 @@ const { title } = Astro.props;
       ::view-transition-old(root),
       ::view-transition-new(root) {
         animation-duration: 0.8s;
+      }
+
+      ::-webkit-scrollbar {
+        height: 5px;
+        width: 10px;
+
+        background-color: grey;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgb(30, 41, 59);
+        border: 2px solid transparent;
+        background-clip: content-box;
       }
     </style>
   </body>
