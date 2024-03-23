@@ -1,0 +1,23 @@
+---
+import BentoGrid from "./BentoGrid.astro";
+import BentoGridItem from "./BentoGridItem.astro";
+import { projectData } from "./projectData.astro";
+---
+
+<BentoGrid>
+  {
+    projectData.map((value, index) => {
+      return (
+        <BentoGridItem
+          key={index}
+          id={value.id}
+          title={value.title}
+          description={value.description}
+          image={value.image}
+          icon={value.svg1}
+          className={index === 0 || index === 3 ? "md:col-span-2" : ""}
+        />
+      );
+    })
+  }
+</BentoGrid>

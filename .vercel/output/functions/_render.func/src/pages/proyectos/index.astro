@@ -2,7 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 import Projects from "../../components/projects.astro";
 import { projectData } from "../../components/projectData.astro";
-import BentoGridDemo from "../../components/BentoGridDemo.astro";
 ---
 
 <Layout title="Proyectos">
@@ -14,7 +13,7 @@ import BentoGridDemo from "../../components/BentoGridDemo.astro";
       Proyectos
     </h3>
     <div style={`view-transition-name: form`}>
-      <!-- <ul class="list-none flex flex-col gap-y-6 pt-12 pb-24">
+      <ul class="list-none flex flex-col gap-y-6 pt-12 pb-24">
         {
           projectData.map(
             ({ id, title, description, image, svg1, svg2, svg3 }, index) => {
@@ -39,8 +38,7 @@ import BentoGridDemo from "../../components/BentoGridDemo.astro";
             }
           )
         }
-      </ul> -->
-      <BentoGridDemo />
+      </ul>
     </div>
   </section>
 </Layout>
