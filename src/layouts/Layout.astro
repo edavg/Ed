@@ -30,10 +30,10 @@ const { title } = Astro.props;
     <div class="fixed left-0 top-0 -z-10 h-full w-full">
       <div class="relative h-full w-full bg-slate-950 bg-slate">
         <div
-          class="absolute bottom-0 left-[0] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
+          class="move absolute bottom-0 left-[0] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
         >
         </div><div
-          class="absolute bottom-0 hidden md:block right-[-0%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
+          class="move absolute bottom-0 hidden md:block right-[-0%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
         >
         </div>
       </div>
@@ -61,5 +61,40 @@ const { title } = Astro.props;
         background-clip: content-box;
       }
     </style>
+    <!-- <script>
+      import gsap from "gsap";
+      function getRandomPosition(max: number) {
+        return Math.floor(Math.random() * max);
+      }
+
+      function animateToRandomPosition() {
+        const maxX = 200;
+        const maxY = 200;
+
+        gsap.to(".move", {
+          duration: 2,
+          ease: "sine.out",
+          x: getRandomPosition(maxX),
+          y: getRandomPosition(maxY),
+          onComplete: animateToRandomPosition,
+        });
+      }
+
+      animateToRandomPosition();
+
+      gsap.fromTo(
+        ".ed",
+        {
+          y: 5,
+        },
+        {
+          y: -5,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          duration: 3,
+        }
+      );
+    </script> -->
   </body>
 </html>

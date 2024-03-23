@@ -13,12 +13,15 @@ import { projectData } from "../../components/projectData.astro";
       Proyectos
     </h3>
     <div style={`view-transition-name: form`}>
-      <ul class="list-none">
+      <ul class="list-none flex flex-col gap-y-6 pt-12 pb-24">
         {
           projectData.map(
-            ({ id, title, description, image, svg1, svg2, svg3 }) => {
+            ({ id, title, description, image, svg1, svg2, svg3 }, index) => {
               return (
-                <li id={String(id)}>
+                <li
+                  id={String(id)}
+                  class={`${index === 1 || index === 6 ? "col-span-2" : ""}`}
+                >
                   <a href={`/proyectos/${id}`}>
                     <Projects
                       id={id}

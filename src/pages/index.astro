@@ -10,10 +10,31 @@ import Layout from "../layouts/Layout.astro";
       class="flex lg:flex-row flex-col justify-between bg-gradient-to-r from-slate-100 via-40% via-yellow-100 to-yellow-50 bg-clip-text text-transparent"
     >
       <div class="">
-        <h1 class="text-3xl lg:text-5xl font-extrabold text-yellow-50">
-          Eduardo Villamayor
-        </h1>
-        <p class="text-xl mb-6">Desarrollador Full Stack</p>
+        <div class="relative">
+          <h1
+            class="text-3xl text-center lg:text-5xl font-extrabold text-yellow-50"
+          >
+            Eduardo Villamayor
+          </h1>
+          <div
+            class="absolute inset-x-8 top-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"
+          >
+          </div>
+          <div
+            class="absolute inset-x-16 top-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"
+          >
+          </div>
+          <div
+            class="absolute inset-x-36 top-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"
+          >
+          </div>
+          <div
+            class="absolute inset-x-44 top-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"
+          >
+          </div>
+        </div>
+
+        <p class="text-xl mb-6">Web Developer</p>
         <div class="flex items-center gap-x-1 mb-2">
           <a
             class=""
@@ -26,17 +47,7 @@ import Layout from "../layouts/Layout.astro";
               height={48}
             /></a
           >
-          <a
-            class=""
-            href="https://www.facebook.com/eduardo.villamayor.9"
-            target="_blank"
-            ><Image
-              src="/assets/fbsvg.svg"
-              alt="fadebook"
-              width={48}
-              height={48}
-            /></a
-          >
+
           <a
             class=""
             href="https://www.instagram.com/eduardo_villamayor/"
@@ -57,7 +68,9 @@ import Layout from "../layouts/Layout.astro";
             /></a
           >
         </div>
-        <p
+        <a
+          href="/Ed-resume.pdf"
+          download="/Ed-resume.pdf"
           class="flex items-center cursor-pointer hover:text-yellow-50 hover:fill-yellow-50 group"
         >
           Descargar CV
@@ -83,14 +96,15 @@ import Layout from "../layouts/Layout.astro";
               ></path>
             </svg>
           </span>
-        </p>
+        </a>
       </div>
       <Image
         src="/assets/edphoto.webp"
         width={250}
         height={250}
         alt="Eduardo Villamayor"
-        class="rounded-full max-lg:mx-auto"
+        class="ed rounded-full max-lg:mx-auto"
+        loading={"eager"}
       />
     </div>
     <section
@@ -137,7 +151,6 @@ import Layout from "../layouts/Layout.astro";
           >Ir a mis proyectos</a
         >
       </div>
-      <!-- <Image src='/assets/arrowRight.svg' height={40} width={40} alt=''/> -->
     </section>
   </section>
 </Layout>
