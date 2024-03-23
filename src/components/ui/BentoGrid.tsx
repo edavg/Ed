@@ -16,7 +16,6 @@ export const BentoGrid = ({
 };
 
 export const BentoGridItem = ({
-  className,
   title,
   description,
   header,
