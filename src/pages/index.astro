@@ -4,32 +4,32 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Ed portfolio">
-  <section class="mx-auto">
+  <main>
     <div
       style={`view-transition-name: title`}
-      class="flex lg:flex-row flex-col justify-between bg-gradient-to-r from-slate-100 via-40% via-yellow-100 to-yellow-50 bg-clip-text text-transparent"
+      class="flex md:flex-row flex-col justify-between bg-gradient-to-r from-slate-100 via-40% via-yellow-100 to-yellow-50 bg-clip-text text-transparent"
     >
       <div class="">
         <div class="relative">
           <h1
-            class="text-3xl text-center lg:text-5xl font-extrabold text-yellow-50"
+            class="ed text-3xl md:text-4xl lg:text-5xl font-extrabold text-yellow-50"
           >
             Eduardo Villamayor
           </h1>
           <div
-            class="absolute inset-x-8 top-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[4px] w-3/4 blur-sm"
+            class="absolute inset-x-8 top-full max-w-[170px] lg:w-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[4px] blur-sm"
           >
           </div>
           <div
-            class="absolute inset-x-16 top-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"
+            class="absolute inset-x-16 top-full max-w-[170px] lg:w-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px"
           >
           </div>
           <div
-            class="absolute inset-x-36 top-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[6px] w-1/4 blur-sm"
+            class="absolute inset-x-36 top-full max-w-[170px] lg:w-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[6px] blur-sm"
           >
           </div>
           <div
-            class="absolute inset-x-36 top-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"
+            class="absolute inset-x-36 top-full max-w-[170px] lg:w-full bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px"
           >
           </div>
         </div>
@@ -99,11 +99,11 @@ import Layout from "../layouts/Layout.astro";
         </a>
       </div>
       <Image
-        src="/assets/edphoto.webp"
+        src="/ed-photo-1.webp"
         width={250}
         height={250}
         alt="Eduardo Villamayor"
-        class="ed rounded-full max-lg:mx-auto"
+        class="rounded-full max-lg:mx-auto [mask-image:_linear-gradient(black_70%,_transparent)]"
         loading={"eager"}
       />
     </div>
@@ -152,5 +152,5 @@ import Layout from "../layouts/Layout.astro";
         >
       </div>
     </section>
-  </section>
+  </main>
 </Layout>

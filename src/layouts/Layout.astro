@@ -1,7 +1,7 @@
 ---
 import "@fontsource-variable/onest";
 import Nav from "../components/nav.astro";
-import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
 }
@@ -18,11 +18,16 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
   </head>
   <body
-    class="text-yellow-50 font-medium mt-12 max-w-screen-lg mx-auto w-11/12 antialiased selection:bg-yellow-50 selection:text-slate-800"
+    class="text-textPrimary font-medium mt-12 max-w-screen-lg mx-auto w-11/12 antialiased selection:bg-yellow-50 selection:text-slate-800"
   >
+    <div
+      data-page="transition"
+      class="bg-slate-950 h-screen grid fixed place-items-center inset-0 z-[999] text-5xl font-bold pointer-events-none"
+    >
+      <span class="preLoader"></span>
+    </div>
     <header>
       <Nav />
     </header>
@@ -41,59 +46,87 @@ const { title } = Astro.props;
     <div class="relative animate-fade mt-36">
       <slot />
     </div>
-    <style is:global>
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: 0.8s;
-      }
 
+    <script>
+      import gsap from "gsap";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const intro = document.querySelector(
+          '[data-page="transition"]'
+        ) as HTMLDivElement;
+        const preLoader = document.querySelector(
+          ".preLoader"
+        ) as HTMLSpanElement;
+
+        const tl = gsap.timeline();
+
+        if (!sessionStorage.getItem("preload")) {
+          sessionStorage.setItem("preload", "true");
+
+          const saludos = [
+            "Welcome",
+            "Bienvenue",
+            "Benvenuto",
+            "Bem-vindo",
+            "Willkommen",
+            "Welkom",
+            "Witaj",
+            "Vítejte",
+            "Välkommen",
+            "Velkommen",
+            "Tervetuloa",
+            "Üdvözöljük",
+            "Hoş geldiniz",
+            "환영합니다",
+            "ようこそ",
+            "أهلاً وسهلاً",
+            "Добро пожаловать",
+          ];
+          let currentSaludo = 0;
+
+          setTimeout(() => {
+            const saludoInterval = setInterval(() => {
+              preLoader.textContent = saludos[currentSaludo];
+
+              currentSaludo++;
+
+              if (currentSaludo >= saludos.length) {
+                clearInterval(saludoInterval);
+
+                gsap.to(preLoader, {
+                  opacity: 0,
+                  duration: 0.5,
+                  onComplete: () => {
+                    preLoader.textContent = "Bienvenido";
+                    gsap.to(preLoader, {
+                      opacity: 1,
+                      duration: 0.5,
+                    });
+                  },
+                });
+
+                gsap.to(intro, {
+                  height: "0px",
+                  overflow: "hidden",
+                  delay: 1.5,
+                  duration: 1.5,
+                  ease: "power2.inOut",
+                  onComplete: () => {
+                    intro.style.display = "none";
+                  },
+                });
+              }
+            }, 200);
+          }, 600);
+        } else {
+          intro.style.display = "none";
+        }
+      });
+    </script>
+    <style is:global>
       ::-webkit-scrollbar {
         display: none;
-        height: 5px;
-        width: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: rgb(30, 41, 59);
-        border: 2px solid transparent;
-        background-clip: content-box;
       }
     </style>
-    <!-- <script>
-      import gsap from "gsap";
-      function getRandomPosition(max: number) {
-        return Math.floor(Math.random() * max);
-      }
-
-      function animateToRandomPosition() {
-        const maxX = 200;
-        const maxY = 200;
-
-        gsap.to(".move", {
-          duration: 2,
-          ease: "sine.out",
-          x: getRandomPosition(maxX),
-          y: getRandomPosition(maxY),
-          onComplete: animateToRandomPosition,
-        });
-      }
-
-      animateToRandomPosition();
-
-      gsap.fromTo(
-        ".ed",
-        {
-          y: 5,
-        },
-        {
-          y: -5,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          duration: 3,
-        }
-      );
-    </script> -->
   </body>
 </html>

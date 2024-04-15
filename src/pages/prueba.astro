@@ -1,0 +1,38 @@
+---
+
+---
+
+<main>
+  <section class="h-screen bg-black"></section>
+  <section class="trigger h-[400vh] flex bg-slate-400 relative">
+    <div class="main sticky top-0 h-screen flex items-center overflow-hidden">
+      <div class="w-[1200px] h-[800px] bg-white"></div>
+      <div class="w-[1200px] h-[800px] bg-white"></div>
+      <div class="w-[1200px] h-[800px] bg-white"></div>
+      <div class="w-[1200px] h-[800px] bg-white"></div>
+    </div>
+  </section>
+  <section class="h-screen bg-slate-950"></section>
+</main>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/all";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const main = document.querySelector(".main") as HTMLDivElement;
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".trigger",
+      pin: true,
+      end: () => "+=" + main.offsetWidth,
+
+      markers: true,
+    },
+  });
+
+  tl.to(".main", {
+    xPercent: -66,
+  });
+</script>
