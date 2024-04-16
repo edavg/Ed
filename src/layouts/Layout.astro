@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/onest";
 import Nav from "../components/nav.astro";
+import Footer from "../components/footer.astro";
 
 interface Props {
   title: string;
@@ -15,40 +16,52 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/developer.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body
-    class="text-textPrimary font-medium mt-12 max-w-screen-lg mx-auto w-11/12 antialiased selection:bg-yellow-50 selection:text-slate-800"
+    style="overflow: hidden;"
+    class="text-textPrimary bg-slate-950 font-medium antialiased selection:bg-yellow-50 selection:text-slate-800"
   >
     <div
+      dir="rtl"
       data-page="transition"
-      class="bg-slate-950 h-screen grid fixed place-items-center inset-0 z-[999] text-5xl font-bold pointer-events-none"
+      class="h-screen grid lg:grid-cols-3 fixed inset-0 z-[999] text-2xl md:text-3xl lg:text-5xl font-bold"
     >
-      <span class="preLoader"></span>
+      <div class="h-full w-full hidden lg:block bg-slate-950"></div>
+      <div
+        class="h-full relative overflow-hidden w-full grid place-items-center bg-slate-950"
+      >
+        <span class="preLoader"></span>
+      </div>
+      <div class="h-full w-full hidden lg:block bg-slate-950"></div>
     </div>
-    <header>
-      <Nav />
-    </header>
-
+    <Nav />
     <div class="fixed left-0 top-0 -z-10 h-full w-full">
-      <div class="relative h-full w-full bg-slate-950 bg-slate">
+      <div class="relative h-full w-full">
         <div
           class="move absolute bottom-0 left-[0] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
         >
-        </div><div
+        </div>
+        <div
           class="move absolute bottom-0 hidden md:block right-[-0%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
+        >
+        </div>
+        <div
+          class="move absolute hidden md:block left-[10%] bottom-[-10%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle_farthest-side,rgba(69,87,189,0.15),rgba(255,255,255,0))]"
         >
         </div>
       </div>
     </div>
-    <div class="relative animate-fade mt-36">
+    <main class="relative max-md:py-20 max-w-6xl mx-auto px-4 md:px-6">
       <slot />
-    </div>
+    </main>
+    <Footer />
 
     <script>
       import gsap from "gsap";
+      import Lenis from "@studio-freight/lenis";
 
       document.addEventListener("DOMContentLoaded", () => {
         const intro = document.querySelector(
@@ -58,7 +71,9 @@ const { title } = Astro.props;
           ".preLoader"
         ) as HTMLSpanElement;
 
-        const tl = gsap.timeline();
+        const introDivs = document.querySelectorAll(
+          '[data-page="transition"] div'
+        );
 
         if (!sessionStorage.getItem("preload")) {
           sessionStorage.setItem("preload", "true");
@@ -105,24 +120,29 @@ const { title } = Astro.props;
                   },
                 });
 
-                gsap.to(intro, {
-                  height: "0px",
-                  overflow: "hidden",
-                  delay: 1.5,
-                  duration: 1.5,
-                  ease: "power2.inOut",
-                  onComplete: () => {
-                    intro.style.display = "none";
-                  },
+                introDivs.forEach((div) => {
+                  gsap.to(div, {
+                    width: "0px",
+                    overflow: "hidden",
+                    delay: 1.5,
+                    duration: 1.5,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                      intro.style.display = "none";
+                      document.body.style.overflow = "auto";
+                    },
+                  });
                 });
               }
             }, 200);
           }, 600);
         } else {
           intro.style.display = "none";
+          document.body.style.overflow = "auto";
         }
       });
     </script>
+
     <style is:global>
       ::-webkit-scrollbar {
         display: none;

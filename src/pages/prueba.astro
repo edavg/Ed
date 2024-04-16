@@ -3,36 +3,49 @@
 ---
 
 <main>
-  <section class="h-screen bg-black"></section>
-  <section class="trigger h-[400vh] flex bg-slate-400 relative">
-    <div class="main sticky top-0 h-screen flex items-center overflow-hidden">
-      <div class="w-[1200px] h-[800px] bg-white"></div>
-      <div class="w-[1200px] h-[800px] bg-white"></div>
-      <div class="w-[1200px] h-[800px] bg-white"></div>
-      <div class="w-[1200px] h-[800px] bg-white"></div>
+  <section class="h-screen w-full bg-slate-950"></section>
+  <div class="trigger h-screen flex bg-slate-400 relative overflow-hidden">
+    <div
+      class="grid leading-3 w-full place-items-center h-screen bg-black text-white flex-shrink-0"
+    >
+      <span>Hola</span>
     </div>
-  </section>
-  <section class="h-screen bg-slate-950"></section>
+    <div
+      class="grid w-full place-items-center h-screen bg-gray-200 text-black flex-shrink-0"
+    >
+      <span>Hola</span>
+    </div>
+    <div
+      class="grid w-full place-items-center h-screen bg-gray-300 text-black flex-shrink-0"
+    >
+      <span>Hola</span>
+    </div>
+    <div
+      class="grid w-full place-items-center h-screen bg-gray-600 text-black flex-shrink-0"
+    >
+      <span>Hola</span>
+    </div>
+  </div>
+  <section class="h-screen w-full bg-slate-950"></section>
 </main>
 
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/all";
 
+  const slider = document.querySelector(".trigger") as HTMLDivElement;
+  const sections = gsap.utils.toArray(".trigger div");
+
   gsap.registerPlugin(ScrollTrigger);
 
-  const main = document.querySelector(".main") as HTMLDivElement;
-  let tl = gsap.timeline({
+  gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: "none",
     scrollTrigger: {
-      trigger: ".trigger",
+      trigger: slider,
       pin: true,
-      end: () => "+=" + main.offsetWidth,
-
-      markers: true,
+      scrub: 1,
+      end: "+=3000",
     },
-  });
-
-  tl.to(".main", {
-    xPercent: -66,
   });
 </script>
