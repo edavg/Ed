@@ -1,60 +1,86 @@
 ---
-
+import { Image } from "astro:assets";
 ---
 
 <section class="py-24">
-  <h2 class="text-2xl font-bold mb-12 underline text-textPrimary">
-    Lo que hago
-  </h2>
-  <div class="flex flex-col gap-y-6">
-    <p class="split">
-      Me dedico páginas Web del lado del cliente ya sean páginas Single Page
-      Aplication o Multi Page Aplication, buscando siempre, la mejor experiencia
-      para el usuario. Me encata todas las herramientas de desarrollo que estén
-      en tendencia, así como las mejores liberías de de animaciones.
-    </p>
-    <p class="split2">
-      He empezado mi trayecto con los cursos certificados Front-end de META y
-      desde entonces mi profesión se basa más realizar interfaces con la
-      reactividad, poseo experiencia como interactuación con API's, rutas
-      dinámicas, optimización del SEO, como también elaboración de Ecommerces,
-      Landing Pages y Portfolios.
-    </p>
+  <div>
+    <span class="reveal text-lg font-bold text-textPrimary">Skills</span>
+    <div class="relative">
+      <h2 class="reveal text-3xl lg:text-5xl font-bold mb-2">
+        Me dedico a realizar páginas Web buscando <br
+          class="hidden lg:block"
+        />siempre, la mejor experiencia para el usuario
+      </h2>
+      <div class="flex flex-col md:flex-row justify-between gap-6">
+        <p class="reveal basis-[60%]">
+          Encuentro una fascinación con las tendencias de desarrollo y siempre
+          busco estar al tanto de las novedades que ofrece este vasto mundo del
+          desarrollo Web.
+        </p>
+        <div class="flex gap-x-6 basis-[40%]">
+          <Image
+            src={"/assets/gsap.svg"}
+            width={100}
+            height={200}
+            alt={"Greensock animation platform logo"}
+            class={"logo"}
+          />
+          <Image
+            src={"/assets/next-js.svg"}
+            width={100}
+            height={150}
+            alt={"next js logo"}
+            class={"logo"}
+          />
+        </div>
+      </div>
+    </div>
+    <!-- <div>
+      <p class="reveal">
+        He empezado mi trayecto con los cursos certificados Front-end de META y
+        desde entonces, mi profesión se ha basado más realizar interfaces con la
+        reactividad, poseo experiencia como interactuación con API's, rutas
+        dinámicas, optimización del SEO, como también elaboración de Ecommerces,
+        Landing Pages y Portfolios.
+      </p>
+    </div> -->
   </div>
 </section>
 
 <script>
   import gsap from "gsap";
-  import { SplitText } from "gsap-trial/all";
-  import ScrollTrigger from "gsap-trial/ScrollTrigger";
+  import SplitType from "split-type";
+  import { ScrollTrigger, TextPlugin } from "gsap/all";
 
-  gsap.registerPlugin(SplitText, ScrollTrigger);
+  gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
-  let text1 = new SplitText(".split", { type: "chars" });
-  let chars1 = text1.chars;
+  const logos = document.querySelectorAll(".logo");
+  const splitType = document.querySelectorAll(".reveal");
 
-  let text2 = new SplitText(".split2", { type: "chars" });
-  let chars2 = text2.chars;
+  splitType.forEach((char: any, i) => {
+    const text = new SplitType(char, { types: "chars" });
 
-  gsap.from(chars1, {
-    opacity: 0,
-    y: 10,
-    scrollTrigger: {
-      trigger: ".split",
-      start: "top 50%",
-    },
-    stagger: 0.005,
+    gsap.from(text.chars, {
+      scrollTrigger: {
+        trigger: char,
+        scrub: true,
+        start: "top 80%",
+        end: "top 60%",
+      },
+      scaleY: 0,
+      stagger: 0.3,
+    });
   });
 
-  console.log(chars2);
-
-  gsap.from(chars2, {
-    yPercent: 100,
-
-    overflow: "hidden",
-    scrollTrigger: {
-      trigger: ".split2",
-      start: "top 50%",
-    },
+  logos.forEach((logo) => {
+    gsap.from(logo, {
+      scaleX: 0,
+      duration: 0.3,
+      ease: "power4.in",
+      scrollTrigger: {
+        trigger: logo,
+        start: "top 80%",
+      },
+    });
   });
 </script>
