@@ -1,0 +1,60 @@
+---
+
+---
+
+<section class="py-24">
+  <h2 class="text-2xl font-bold mb-12 underline text-textPrimary">
+    Lo que hago
+  </h2>
+  <div class="flex flex-col gap-y-6">
+    <p class="split">
+      Me dedico páginas Web del lado del cliente ya sean páginas Single Page
+      Aplication o Multi Page Aplication, buscando siempre, la mejor experiencia
+      para el usuario. Me encata todas las herramientas de desarrollo que estén
+      en tendencia, así como las mejores liberías de de animaciones.
+    </p>
+    <p class="split2">
+      He empezado mi trayecto con los cursos certificados Front-end de META y
+      desde entonces mi profesión se basa más realizar interfaces con la
+      reactividad, poseo experiencia como interactuación con API's, rutas
+      dinámicas, optimización del SEO, como también elaboración de Ecommerces,
+      Landing Pages y Portfolios.
+    </p>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { SplitText } from "gsap-trial/all";
+  import ScrollTrigger from "gsap-trial/ScrollTrigger";
+
+  gsap.registerPlugin(SplitText, ScrollTrigger);
+
+  let text1 = new SplitText(".split", { type: "chars" });
+  let chars1 = text1.chars;
+
+  let text2 = new SplitText(".split2", { type: "chars" });
+  let chars2 = text2.chars;
+
+  gsap.from(chars1, {
+    opacity: 0,
+    y: 10,
+    scrollTrigger: {
+      trigger: ".split",
+      start: "top 50%",
+    },
+    stagger: 0.005,
+  });
+
+  console.log(chars2);
+
+  gsap.from(chars2, {
+    yPercent: 100,
+
+    overflow: "hidden",
+    scrollTrigger: {
+      trigger: ".split2",
+      start: "top 50%",
+    },
+  });
+</script>
