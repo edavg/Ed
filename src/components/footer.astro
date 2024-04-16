@@ -1,58 +1,124 @@
 ---
-
+let date = new Date().getFullYear();
 ---
 
-<hr class="max-w-6xl mx-auto mb-6" />
-<footer id="contacto" class="max-w-6xl mx-auto pb-12">
-  <section
-    class="mx-auto pb-12 grid grid-cols-2 border-[1px] border-yellow-50 py-12"
+<footer id="contacto" class="max-w-6xl px-4 mx-auto pb-12">
+  <div
+    class="mx-auto flex flex-col gap-y-2 border-[1px] border-yellow-50 py-12"
   >
-    <form method="POST" action="https://formsubmit.co/eduardo.avg95@gmail.com">
-      <h4 class="text-yellow-50 text-center text-4xl font-bold mb-6">
-        ¡Conversemos!
-      </h4>
-      <div
-        class="w-4/5 mx-auto flex flex-col max-w-md"
-        style={`view-transition-name: form`}
-      >
-        <label class="mb-2">Nombre:</label>
-        <input
-          type="text"
-          name="name"
-          class="mb-4 py-2 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:border-4 transition-colors"
-          required
-        />
-        <label class="mb-2">Email:</label>
-        <input
-          type="email"
-          name="email"
-          class="mb-4 py-2 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:border-4 transition-colors"
-          required
-        />
-        <label class="mb-2">Teléfono:</label>
-        <input
-          type="tel"
-          name="number"
-          class="mb-4 py-2 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:border-4 transition-colors"
-          required
-        />
-        <label class="mb-2">Mensaje</label>
-        <textarea
-          name="text"
-          class="mb-6 py-2 px-4 bg-transparent border-2 caret-yellow-100 border-slate-200 outline-0 focus:border-yellow-100 focus:border-4 transition-colors"
-          required></textarea>
-        <button
-          type="submit"
-          class="bg-slate-600 hover:bg-yellow-100 hover:text-slate-600 rounded-sm border-[1px] border-slate-500 hover:border-yellow-100 transition-colors"
-          >Enviar</button
-        >
+    <div class="flex flex-col gap-y-12 md:flex-row mb-6">
+      <div class="flex-1 flex flex-col items-center">
+        <div class="grid grid-cols-2 gap-x-4 gap-y-8 text-xs px-4">
+          <div class="flex flex-col gap-y-1">
+            <span class="font-bold mb-2 underline">FOLLOW</span>
+            <a
+              class="hover:underline"
+              href="https://www.instagram.com/eduardo_villamayor/"
+              target="_blank">Instagram</a
+            >
+            <a
+              class="hover:underline"
+              href="https://www.linkedin.com/in/eduardo-villamayor-3088291a2"
+              target="_blank">LinkedIn</a
+            >
+            <a
+              class="hover:underline"
+              href="https://github.com/edavg"
+              target="_blank">Github</a
+            >
+          </div>
+          <div class="flex flex-col gap-y-1">
+            <span class="font-bold mb-2 underline">GET IN TOUCH</span>
+            <span>eduardo.avg95@gmail.com</span>
+            <span>+595 981 233 153</span>
+          </div>
+          <div class="flex flex-col gap-y-1">
+            <span class="font-bold mb-2 underline">DESCUBRE</span>
+            <a class="hover:underline" href="/#inicio">Home</a>
+            <a class="hover:underline" href="/#proyectos">Proyectos</a>
+          </div>
+          <div class="flex flex-col gap-y-1">
+            <span class="font-bold mb-2 underline">TECNOLOGIAS</span>
+            <a
+              class="hover:underline"
+              target="_blank"
+              href="https://es.react.dev/">React</a
+            >
+            <a
+              class="hover:underline"
+              target="_blank"
+              href="https://astro.build/">Astro</a
+            >
+            <a
+              class="hover:underline"
+              target="_blank"
+              href="https://nextjs.org/">Nextjs</a
+            >
+            <a class="hover:underline" href="https://gsap.com/">Gsap</a>
+            <a
+              class="hover:underline"
+              target="_blank"
+              href="https://www.framer.com/motion/">Framer Motion</a
+            >
+          </div>
+        </div>
       </div>
-      <input
-        type="hidden"
-        name="_next"
-        value="https://edavg-portfolio-tau.vercel.app/"
-      />
-      <input type="hidden" name="_captcha" value="false" />
-    </form>
-  </section>
+      <form
+        class="flex-1 text-sm"
+        method="POST"
+        action="https://formsubmit.co/eduardo.avg95@gmail.com"
+      >
+        <h4 class="text-yellow-50 text-center text-2xl font-bold mb-4">
+          ¡Conversemos!
+        </h4>
+        <div class="w-4/5 mx-auto flex flex-col max-w-sm">
+          <label class="mb-2">Nombre:</label>
+          <input
+            type="text"
+            name="name"
+            class="mb-2 py-1 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:ring-2 ring-yellow-50 transition-colors"
+            required
+          />
+          <label class="mb-2">Email:</label>
+          <input
+            type="email"
+            name="email"
+            class="mb-2 py-1 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:ring-2 ring-yellow-50 transition-colors"
+            required
+          />
+          <label class="mb-2">Teléfono:</label>
+          <input
+            type="tel"
+            name="number"
+            class="mb-2 py-1 px-4 bg-transparent border-2 border-slate-200 outline-0 focus:border-yellow-100 focus:ring-2 ring-yellow-50 transition-colors"
+            required
+          />
+          <label class="mb-2">Mensaje</label>
+          <textarea
+            name="text"
+            class="mb-6 py-1 px-4 bg-transparent border-2 caret-yellow-100 border-slate-200 outline-0 focus:border-yellow-100 focus:ring-2 ring-yellow-50 transition-colors"
+            required></textarea>
+          <button
+            type="submit"
+            class="bg-slate-600 hover:bg-yellow-100 hover:text-slate-600 border-[1px] border-slate-500 hover:border-yellow-100 transition-colors"
+            >Enviar</button
+          >
+        </div>
+        <input
+          type="hidden"
+          name="_next"
+          value="https://edavg-portfolio-tau.vercel.app/"
+        />
+        <input type="hidden" name="_captcha" value="true" />
+      </form>
+    </div>
+    <div class="h-px w-11/12 mx-auto bg-yellow-50"></div>
+    <div
+      class="font-bold text-center justify-center max-sm:flex-col flex max-sm:gap-1 gap-4"
+    >
+      <span>Eduardo Villamayor</span>
+      <span>Front-End Developer</span>
+      <span>&copy; {date}</span>
+    </div>
+  </div>
 </footer>
