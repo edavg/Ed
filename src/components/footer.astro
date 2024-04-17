@@ -139,12 +139,13 @@ let date = new Date().getFullYear();
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/all";
+
   gsap.registerPlugin(ScrollTrigger);
 
-  const footer = document.querySelector("footer");
-  const body = document.querySelector("body");
+  document.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector("footer");
+    const body = document.querySelector("body");
 
-  setTimeout(() => {
     gsap.to(body, {
       scrollTrigger: {
         trigger: footer,
@@ -152,7 +153,7 @@ let date = new Date().getFullYear();
         end: "top 20%",
         scrub: true,
       },
-      backgroundColor: "#ebeae5",
+      backgroundColor: "#a0bec6",
     });
-  }, 500);
+  });
 </script>
