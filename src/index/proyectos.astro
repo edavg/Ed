@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
   <h2
     class="text-2xl lg:text-4xl font-bold underline translate-y-24 md:translate-y-12"
   >
-    Algunos de mis proyectos
+    Algunos proyectos
   </h2>
   <div
     id="scrollX"
@@ -173,19 +173,18 @@ import { Image } from "astro:assets";
     },
   });
 
-  sections.forEach((section: any) => {
-    let text = section.querySelectorAll(".anim");
+  // sections.forEach((section: any) => {
+  //   let text = section.querySelectorAll(".anim");
 
-    gsap.from(text, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power1.in",
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: section,
-        containerAnimation: tween,
-        start: "left 50%",
-      },
-    });
-  });
+  //   gsap.from(text, {
+  //     opacity: 0,
+  //     ease: "power1.in",
+  //     stagger: 0.1,
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       containerAnimation: tween,
+  //       start: "left 50%",
+  //     },
+  //   });
+  // });
 </script>

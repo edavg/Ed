@@ -2,22 +2,24 @@
 import { Image } from "astro:assets";
 ---
 
-<section class="py-24">
-  <div>
-    <span class="reveal text-lg font-bold text-textPrimary">Skills</span>
+<section class="">
+  <div class="h-screen">
+    <span
+      class="reveal lg:text-lg font-bold text-textPrimary select-none pointer-events-none"
+      >Skills</span
+    >
     <div class="relative">
-      <h2 class="reveal text-3xl lg:text-5xl font-bold mb-2">
-        Me dedico a realizar páginas Web buscando <br
-          class="hidden lg:block"
-        />siempre, la mejor experiencia para el usuario
+      <h2 class="reveal text-xl lg:text-5xl font-bold mb-2">
+        Me dedico a realizar páginas Web buscando siempre la mejor experiencia
+        para el usuario
       </h2>
       <div class="flex flex-col md:flex-row justify-between gap-6">
-        <p class="reveal basis-[60%]">
+        <p class="reveal basis-[70%] text-sm md:text-base lg:text-lg">
           Encuentro una fascinación con las tendencias de desarrollo y siempre
           busco estar al tanto de las novedades que ofrece este vasto mundo del
           desarrollo Web.
         </p>
-        <div class="flex gap-x-6 basis-[40%]">
+        <div class="flex justify-center gap-x-6 basis-[30%]">
           <Image
             src={"/assets/gsap.svg"}
             width={100}
@@ -58,7 +60,7 @@ import { Image } from "astro:assets";
   const splitType = document.querySelectorAll(".reveal");
 
   splitType.forEach((char: any, i) => {
-    const text = new SplitType(char, { types: "chars" });
+    const text = new SplitType(char, { types: "chars,words" });
 
     gsap.from(text.chars, {
       scrollTrigger: {
@@ -67,8 +69,8 @@ import { Image } from "astro:assets";
         start: "top 80%",
         end: "top 60%",
       },
-      scaleY: 0,
       stagger: 0.3,
+      scaleY: 0,
     });
   });
 

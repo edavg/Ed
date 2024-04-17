@@ -4,10 +4,10 @@ let date = new Date().getFullYear();
 
 <footer
   id="contacto"
-  class="max-w-6xl px-4 mx-auto pb-6 md:pb-12 text-slate-950"
+  class="max-w-6xl max-lg:mb-12 h-screen max-h-[1080px] px-4 mx-auto pb-6 flex justify-center items-center w-full text-slate-950"
 >
   <div
-    class="mx-auto flex flex-col gap-y-2 border-[1px] border-slate-950 py-12"
+    class="mx-auto w-full flex flex-col gap-y-2 border-[1px] border-slate-950 py-12"
   >
     <div class="flex flex-col gap-y-6 md:flex-row mb-6">
       <div class="flex-1 flex flex-col items-center">
@@ -99,7 +99,7 @@ let date = new Date().getFullYear();
           <label class="mb-2">Mensaje</label>
           <textarea
             name="text"
-            class="mb-6 py-1 px-4 bg-transparent border-[1px] caret-slate-950 border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
+            class="mb-6 py-1 px-4 bg-transparent border-[1px] resize-none caret-slate-950 border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
             required></textarea>
           <button
             type="submit"
@@ -130,16 +130,19 @@ let date = new Date().getFullYear();
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/all";
   gsap.registerPlugin(ScrollTrigger);
+
   const footer = document.querySelector("footer");
   const body = document.querySelector("body");
 
-  gsap.to(body, {
-    scrollTrigger: {
-      trigger: footer,
-      start: "bottom -110%",
-      end: "bottom -160%",
-      scrub: true,
-    },
-    backgroundColor: "#fef38a",
-  });
+  setTimeout(() => {
+    gsap.to(body, {
+      scrollTrigger: {
+        trigger: footer,
+        start: "top 70%",
+        end: "top 20%",
+        scrub: true,
+      },
+      backgroundColor: "#346dfc",
+    });
+  }, 500);
 </script>
