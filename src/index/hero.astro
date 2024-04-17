@@ -9,9 +9,9 @@ import { Image } from "astro:assets";
   <div class="flex-1 flex flex-col justify-center">
     <div class="relative">
       <div
-        class="overflow-hidden leading-3 py-3 text-3xl text-nowrap md:text-4xl lg:text-5xl font-extrabold text-yellow-50"
+        class="overflow-hidden relative leading-3 pb-4 text-3xl text-nowrap md:text-4xl lg:text-5xl font-extrabold text-yellow-50"
       >
-        <h1 class="ed">Eduardo Villamayor</h1>
+        <h1>Eduardo Villamayor</h1>
       </div>
     </div>
     <div class="flex items-center gap-x-1 mb-2">
@@ -73,13 +73,11 @@ import { Image } from "astro:assets";
         </svg>
       </span>
     </a>
-    <div
-      class="md:mt-16 text-pretty bg-gradient-to-r from-slate-100 via-40% via-yellow-100 to-yellow-50 bg-clip-text text-transparent"
-    >
+    <div class="max-sm:translate-y-6 md:mt-16 text-pretty">
       <h2 class="text-2xl font-bold mb-2 md:mb-6 uppercase text-textPrimary">
         Sobre mí
       </h2>
-      <p class="mb-2 text-xs sm:text-sm md:text-base">
+      <p class="mb-2 text-xs sm:text-sm md:text-base text-textPrimary">
         Mi nombre es Eduardo y soy estudiante de la carrera de Ciencias de la
         Informática, actualmente me dedico al desarrollo Front-end con liberías
         de <span class="text-yellow-300">JavaScript</span> como <span
@@ -101,10 +99,10 @@ import { Image } from "astro:assets";
   <div class="flex-1 flex-shrink-0">
     <Image
       src="/ed-photo-1.webp"
-      width={250}
-      height={250}
+      width={350}
+      height={400}
       alt="Eduardo Villamayor"
-      class="mx-auto [mask-image:_linear-gradient(black_80%,_transparent)] max-sm:h-[200px] object-cover object-top"
+      class="mx-auto [mask-image:_linear-gradient(black_80%,_transparent)] max-sm:h-[250px] object-cover object-top lg:max-w-[45vh]"
       loading={"eager"}
       fetchpriority={"high"}
     />
