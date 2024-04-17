@@ -148,10 +148,7 @@ const { title } = Astro.props;
                       intro.style.display = "none";
                       document.body.style.overflow = "auto";
                       loading = false;
-                      gsap.from(".ed", {
-                        opacity: 0,
-                        duration: 3,
-                      });
+                     
                     },
                   });
                 });
@@ -163,10 +160,7 @@ const { title } = Astro.props;
           document.body.style.overflow = "auto";
           loading = false;
 
-          gsap.from(".ed", {
-            opacity: 0,
-            duration: 1,
-          });
+          
         }
       });
     </script>
