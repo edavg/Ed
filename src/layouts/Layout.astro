@@ -22,7 +22,7 @@ const { title } = Astro.props;
   </head>
   <body
     style="overflow: hidden;"
-    class="text-textPrimary bg-slate-950 font-medium antialiased selection:bg-yellow-50 selection:text-slate-800"
+    class="text-textPrimary bg-slate-950 font-medium antialiased selection:mix-blend-difference selection:bg-yellow-50 selection:text-slate-800"
   >
     <div
       dir="rtl"
@@ -37,7 +37,7 @@ const { title } = Astro.props;
       </div>
       <div class="h-full w-full hidden lg:block bg-slate-950"></div>
     </div>
-    <Nav />
+
     <div class="fixed left-0 top-0 -z-10 h-full w-full">
       <div class="relative h-full w-full">
         <div
@@ -54,6 +54,7 @@ const { title } = Astro.props;
         </div>
       </div>
     </div>
+    <Nav />
     <main class="relative max-w-6xl mx-auto px-4 md:px-6">
       <slot />
     </main>
@@ -131,8 +132,9 @@ const { title } = Astro.props;
 
                 introDivs.forEach((div) => {
                   gsap.to(div, {
-                    width: "0px",
+                    clipPath: "inset(0 0 0 100%)",
                     overflow: "hidden",
+
                     delay: 1.5,
                     duration: 1.5,
                     ease: "power2.inOut",
@@ -143,7 +145,7 @@ const { title } = Astro.props;
                   });
                 });
               }
-            }, 200);
+            }, 150);
           }, 600);
         } else {
           intro.style.display = "none";
