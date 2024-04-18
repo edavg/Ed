@@ -83,30 +83,41 @@ let date = new Date().getFullYear();
       >
         <h4 class="text-center text-2xl mb-4">¡Conversemos!</h4>
         <div class="w-4/5 mx-auto flex flex-col max-w-sm">
-          <label for="name" class="mb-2">Nombre:</label>
+          <label for="nombre" class="mb-2">Nombre:</label>
           <input
+            id="nombre"
             type="text"
-            name="name"
+            name="nombre"
+            autocomplete="name"
+            aria-required="true"
             class="mb-2 py-1 px-4 bg-transparent border-[1px] border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
             required
           />
           <label for="email" class="mb-2">Email:</label>
           <input
+            id="email"
             type="email"
             name="email"
+            autocomplete="email"
+            aria-required="true"
             class="mb-2 py-1 px-4 bg-transparent border-[1px] border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
             required
           />
-          <label for="number" class="mb-2">Teléfono:</label>
+          <label for="phone" class="mb-2">Teléfono:</label>
           <input
+            id="phone"
             type="tel"
-            name="number"
+            name="phone"
+            aria-required="true"
+            autocomplete="tel"
             class="mb-2 py-1 px-4 bg-transparent border-[1px] border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
             required
           />
-          <label for="text" class="mb-2">Mensaje</label>
+          <label for="mensaje" class="mb-2">Mensaje</label>
           <textarea
-            name="text"
+            id="mensaje"
+            name="mensaje"
+            aria-required="true"
             class="mb-6 py-1 px-4 bg-transparent border-[1px] resize-none caret-slate-950 border-slate-950 outline-0 focus:border-slate-950 focus:ring-2 ring-slate-950 transition-colors"
             required></textarea>
           <button

@@ -63,6 +63,7 @@ const { title } = Astro.props;
     <script>
       import gsap from "gsap";
       import Lenis from "@studio-freight/lenis";
+      import SplitType from "split-type";
 
       const lenis = new Lenis();
       const raf = (time: any) => {
@@ -75,10 +76,8 @@ const { title } = Astro.props;
 
       function GetSizes() {
         let width = window.innerWidth;
-        return width > 765 ? "inset(0 0 0 100%)" : "inset(0 50% 0 50%)";
+        return width > 768 ? "inset(0 0 0 100%)" : "inset(0 50% 0 50%)";
       }
-
-      let loading = true;
 
       document.addEventListener("DOMContentLoaded", () => {
         const intro = document.querySelector(
@@ -91,6 +90,14 @@ const { title } = Astro.props;
         const introDivs = document.querySelectorAll(
           '[data-page="transition"] div'
         );
+
+        const introSecondText = document.querySelector(
+          '[data-intro="second"] p'
+        ) as HTMLElement;
+
+        const text = new SplitType(introSecondText, {
+          types: "chars,words,lines",
+        });
 
         if (!sessionStorage.getItem("preload")) {
           sessionStorage.setItem("preload", "true");
@@ -125,16 +132,19 @@ const { title } = Astro.props;
               if (currentSaludo >= saludos.length) {
                 clearInterval(saludoInterval);
 
-                gsap.to(preLoader, {
+                const tl = gsap.timeline();
+
+                tl.to(preLoader, {
                   opacity: 0,
                   duration: 0.5,
                   onComplete: () => {
                     preLoader.textContent = "Bienvenido";
-                    gsap.to(preLoader, {
-                      opacity: 1,
-                      duration: 0.5,
-                    });
                   },
+                });
+
+                tl.to(preLoader, {
+                  opacity: 1,
+                  duration: 0.5,
                 });
 
                 introDivs.forEach((div) => {
@@ -142,25 +152,53 @@ const { title } = Astro.props;
                     clipPath: GetSizes(),
                     overflow: "hidden",
                     delay: 1.5,
-                    duration: 1.5,
-                    ease: "power2.inOut",
+                    duration: 0.7,
+                    ease: "expo.in",
                     onComplete: () => {
                       intro.style.display = "none";
                       document.body.style.overflow = "auto";
-                      loading = false;
-                     
                     },
                   });
                 });
+
+                tl.from(".ed", {
+                  y: 60,
+                  delay: 1.8,
+                  duration: 0.5,
+                });
+
+                // gsap.to(preLoader, {
+                //   opacity: 0,
+                //   duration: 0.5,
+                //   onComplete: () => {
+                //     preLoader.textContent = "Bienvenido";
+                //     gsap.to(preLoader, {
+                //       opacity: 1,
+                //       duration: 0.5,
+                //     });
+                //   },
+                // });
+
+                // introDivs.forEach((div) => {
+                //   gsap.to(div, {
+                //     clipPath: GetSizes(),
+                //     overflow: "hidden",
+                //     delay: 1.5,
+                //     duration: 1.5,
+                //     ease: "power2.inOut",
+                //     onComplete: () => {
+                //       intro.style.display = "none";
+                //       document.body.style.overflow = "auto";
+
+                //     },
+                //   });
+                // });
               }
-            }, 150);
-          }, 600);
+            }, 80);
+          }, 800);
         } else {
           intro.style.display = "none";
           document.body.style.overflow = "auto";
-          loading = false;
-
-          
         }
       });
     </script>

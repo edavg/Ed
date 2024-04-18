@@ -17,10 +17,12 @@ import { Image } from "astro:assets";
       <div class="">
         <div class="text-xs md:text-base lg:text-lg">
           <div class="">
-            <span
-              class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-              >Experiencia de usuario (UX)</span
-            >
+            <div class="relative w-fit">
+              <span
+                class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
+                >Experiencia de usuario (UX)</span
+              ><div class="underlines w-full h-[2px] bg-yellow-50"></div>
+            </div>
             <p class="reveal">
               Transformar productos comunes en soluciones intuitivas y
               accesibles para los usuarios. Mediante un enfoque en la usabilidad
@@ -29,10 +31,12 @@ import { Image } from "astro:assets";
             </p>
           </div>
           <div class="mt-[22vh] sm:mt-[22vw]">
-            <span
-              class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-              >Optimización de SEO</span
-            >
+            <div class="w-fit relative">
+              <span
+                class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
+                >Optimización de SEO</span
+              ><div class="underlines w-full h-[2px] bg-yellow-50"></div>
+            </div>
             <p class="reveal">
               Garantizar la visibilidad y ranking de resultados. Asegurándome de
               los elementos que complementan y armonizan los algoritmos de
@@ -42,10 +46,14 @@ import { Image } from "astro:assets";
             </p>
           </div>
           <div class="mt-[22vh] sm:mt-[22vw]">
-            <span
-              class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-              >Responsive</span
-            >
+            <div class="relative w-fit">
+              <span
+                class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
+                >Responsive</span
+              >
+              <div class="underlines w-full h-[2px] bg-yellow-50"></div>
+            </div>
+
             <p class="reveal">
               Asegurar la experiencia para todos los dispositivos de una manera
               coherente y fluida. Priorizo la adaptabilidad del diseño visual y
@@ -54,10 +62,13 @@ import { Image } from "astro:assets";
             </p>
           </div>
           <div class="mt-[22vh] sm:mt-[22vw]">
-            <span
-              class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-              >tendencias</span
-            >
+            <div class="relative w-fit">
+              <span
+                class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
+                >tendencias</span
+              >
+              <div class="underlines w-full h-[2px] bg-yellow-50"></div>
+            </div>
             <p class="reveal">
               Estoy constantemente sintonía con las nuevas tecnologías que están
               en relación al desarrollo en cuanto a liberías y diseño, para
@@ -81,6 +92,8 @@ import { Image } from "astro:assets";
     const splitType = document.querySelectorAll(".reveal");
 
     const underline = document.getElementById("underline");
+
+    const underLines = document.querySelectorAll(".underlines");
 
     const servicios = document.getElementById("servicios");
 
@@ -107,6 +120,18 @@ import { Image } from "astro:assets";
         end: "bottom 0%",
         scrub: true,
       },
+    });
+
+    underLines.forEach((line) => {
+      gsap.from(line, {
+        width: "0%",
+        scrollTrigger: {
+          trigger: line,
+          start: "top 80%",
+          end: "bottom 0%",
+          scrub: true,
+        },
+      });
     });
   </script>
 </section>
