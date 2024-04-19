@@ -1,7 +1,3 @@
----
-import { Image } from "astro:assets";
----
-
 <section id="servicios">
   <div class="relative mb-[20vw]">
     <div class="grid grid-cols-2 relative h-full">
@@ -20,10 +16,10 @@ import { Image } from "astro:assets";
             <div class="relative w-fit">
               <span
                 class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-                >Experiencia de usuario (UX)</span
+                >User experience</span
               ><div class="underlines w-full h-[2px] bg-yellow-50"></div>
             </div>
-            <p class="reveal">
+            <p class="reveal mt-2">
               Transformar productos comunes en soluciones intuitivas y
               accesibles para los usuarios. Mediante un enfoque en la usabilidad
               y satisfacción del cliente, garantizando cubrir esas necesidades
@@ -34,10 +30,10 @@ import { Image } from "astro:assets";
             <div class="w-fit relative">
               <span
                 class="reveal font-bold uppercase text-lg sm:text-xl lg:text-2xl"
-                >Optimización de SEO</span
+                >SEO</span
               ><div class="underlines w-full h-[2px] bg-yellow-50"></div>
             </div>
-            <p class="reveal">
+            <p class="reveal mt-2">
               Garantizar la visibilidad y ranking de resultados. Asegurándome de
               los elementos que complementan y armonizan los algoritmos de
               búsqueda a través de semántica HTML y mejora de tiempo de carga de
@@ -54,7 +50,7 @@ import { Image } from "astro:assets";
               <div class="underlines w-full h-[2px] bg-yellow-50"></div>
             </div>
 
-            <p class="reveal">
+            <p class="reveal mt-2">
               Asegurar la experiencia para todos los dispositivos de una manera
               coherente y fluida. Priorizo la adaptabilidad del diseño visual y
               la interactividad. Con esto, que la información que quieras
@@ -69,10 +65,10 @@ import { Image } from "astro:assets";
               >
               <div class="underlines w-full h-[2px] bg-yellow-50"></div>
             </div>
-            <p class="reveal">
-              Estoy constantemente sintonía con las nuevas tecnologías que están
-              en relación al desarrollo en cuanto a liberías y diseño, para
-              garantizar que mis clientes tengan un producto moderno y
+            <p class="reveal mt-2">
+              Estoy constantemente en sintonía con las nuevas tecnologías que
+              están en relación al desarrollo en cuanto a liberías y diseño,
+              para garantizar que mis clientes tengan un producto moderno y
               eficiente. Mi compromiso es tener un producto que destaque en el
               mercado.
             </p>
@@ -100,7 +96,7 @@ import { Image } from "astro:assets";
     splitType.forEach((char: any) => {
       const text = new SplitType(char, { types: "chars,words" });
 
-      gsap.from(text.chars, {
+      gsap.from(text.words, {
         scrollTrigger: {
           trigger: char,
           scrub: true,

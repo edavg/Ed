@@ -13,7 +13,7 @@ import { Image } from "astro:assets";
       <h1 class="ed">Eduardo Villamayor</h1>
     </div>
 
-    <div class="flex items-center gap-x-1 mb-2">
+    <div data-intro="swipe" class="flex items-center gap-x-1 mb-2">
       <a
         class=""
         href="https://www.linkedin.com/in/eduardo-villamayor-3088291a2"
@@ -46,6 +46,7 @@ import { Image } from "astro:assets";
     <a
       href="/Ed-resume.pdf"
       download="/Ed-resume.pdf"
+      data-intro="swipe"
       class="flex items-center cursor-pointer hover:text-yellow-50 hover:fill-yellow-50 group"
     >
       Descargar CV
@@ -72,36 +73,33 @@ import { Image } from "astro:assets";
         </svg>
       </span>
     </a>
-    <div data-intro="second" class="max-sm:translate-y-6 md:mt-16 text-pretty">
+    <div data-intro="swipe" class="max-sm:translate-y-6 md:mt-16 text-pretty">
       <h2 class="text-2xl font-bold mb-2 md:mb-6 uppercase text-textPrimary">
         Sobre mí
       </h2>
       <p class="mb-2 text-xs sm:text-sm md:text-base text-textPrimary">
         Mi nombre es Eduardo y soy estudiante de la carrera de Ciencias de la
-        Informática, actualmente me dedico al desarrollo Front-end con liberías
+        Informática, actualmente me dedico al desarrollo Front-end con librerías
         de <span class="text-yellow-300">JavaScript</span> como <span
-          class="text-blue-400">React</span
-        > y frameworks de como:
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          class="bg-gradient-to-b from-gray-500 via-gray-300 to-gray-200 bg-clip-text text-transparent"
+          class="text-[#087ea4]">React</span
+        > y <span class="text-[#42b883]">Vue</span>, así también frameworks como
+        <a href="https://nextjs.org/" target="_blank" class="text-[#ededed]"
           >Next</a
         > y <a
           href="https://astro.build/"
           target="_blank"
-          class="text-orange-500">Astro</a
+          class="text-[#e1387d]">Astro</a
         >.
       </p>
     </div>
   </div>
-  <div data-intro="image" class="flex-1 flex-shrink-0">
+  <div data-intro="swipe" class="flex-1 flex-shrink-0">
     <Image
       src="/ed-photo-1.webp"
       width={350}
       height={400}
       alt="Eduardo Villamayor"
-      class="mx-auto [mask-image:_linear-gradient(black_80%,_transparent)] max-sm:h-[250px] object-cover object-top lg:max-w-[45vh]"
+      class="mx-auto [mask-image:_linear-gradient(black_80%,_transparent)] max-sm:h-[250px] object-cover object-top sm:max-w-[45vh]"
       loading={"eager"}
       fetchpriority={"high"}
     />
