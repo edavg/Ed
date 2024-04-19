@@ -32,6 +32,7 @@ const { title } = Astro.props;
     style="overflow: hidden;"
     class="text-textPrimary bg-slate-950 font-medium antialiased selection:mix-blend-difference selection:bg-yellow-50 selection:text-slate-800"
   >
+    <!-- Preloaders -->
     <div
       dir="rtl"
       data-page="transition"
@@ -46,6 +47,7 @@ const { title } = Astro.props;
       <div class="h-full w-full bg-slate-950"></div>
     </div>
 
+    <!-- Circulos en el bg layout -->
     <div class="fixed left-0 top-0 -z-10 h-full w-full">
       <div class="relative h-full w-full">
         <div
@@ -62,6 +64,8 @@ const { title } = Astro.props;
         </div>
       </div>
     </div>
+
+    <!-- Main document -->
     <Nav />
     <main class="relative max-w-6xl mx-auto px-4 md:px-6">
       <slot />
@@ -71,8 +75,8 @@ const { title } = Astro.props;
     <script>
       import gsap from "gsap";
       import Lenis from "@studio-freight/lenis";
-      import SplitType from "split-type";
 
+      // Lenis scroll
       const lenis = new Lenis();
       const raf = (time: any) => {
         lenis.raf(time);
@@ -82,10 +86,15 @@ const { title } = Astro.props;
 
       requestAnimationFrame(raf);
 
+      // Sizes para el intro
+
       function GetSizes() {
         let width = window.innerWidth;
         return width > 768 ? "inset(0 0 0 100%)" : "inset(0 50% 0 50%)";
       }
+
+      // Intro guardado en el sessionStorage
+      // En caso de ya haber entrado, que no vuelva a mostrar la animación
 
       document.addEventListener("DOMContentLoaded", () => {
         const intro = document.querySelector(
@@ -140,9 +149,7 @@ const { title } = Astro.props;
                   onComplete: () => {
                     preLoader.textContent = "Bienvenido";
                   },
-                });
-
-                tl.to(preLoader, {
+                }).to(preLoader, {
                   opacity: 1,
                   duration: 0.5,
                 });
@@ -152,7 +159,7 @@ const { title } = Astro.props;
                     clipPath: GetSizes(),
                     overflow: "hidden",
                     delay: 1.5,
-                    duration: 0.7,
+                    duration: 0.5,
                     ease: "expo.in",
                     onComplete: () => {
                       intro.style.display = "none";
@@ -165,38 +172,10 @@ const { title } = Astro.props;
                   y: 60,
                   delay: 1,
                   duration: 0.5,
-                });
-
-                tl.from('[data-intro="swipe"]', {
+                }).from('[data-intro="swipe"]', {
                   clipPath: "inset(0 0 100% 100%)",
+                  duration: 0.5,
                 });
-
-                // gsap.to(preLoader, {
-                //   opacity: 0,
-                //   duration: 0.5,
-                //   onComplete: () => {
-                //     preLoader.textContent = "Bienvenido";
-                //     gsap.to(preLoader, {
-                //       opacity: 1,
-                //       duration: 0.5,
-                //     });
-                //   },
-                // });
-
-                // introDivs.forEach((div) => {
-                //   gsap.to(div, {
-                //     clipPath: GetSizes(),
-                //     overflow: "hidden",
-                //     delay: 1.5,
-                //     duration: 1.5,
-                //     ease: "power2.inOut",
-                //     onComplete: () => {
-                //       intro.style.display = "none";
-                //       document.body.style.overflow = "auto";
-
-                //     },
-                //   });
-                // });
               }
             }, 80);
           }, 800);

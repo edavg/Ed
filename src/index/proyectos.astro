@@ -171,17 +171,17 @@ import { Image } from "astro:assets";
   import { ScrollTrigger } from "gsap/all";
 
   gsap.registerPlugin(ScrollTrigger);
-  const scrollX = document.getElementById("scrollX");
+  const scrollX = document.getElementById("scrollX") as HTMLDivElement;
   const sections = gsap.utils.toArray("#scrollX article");
 
-  let tween = gsap.to(sections, {
-    xPercent: -103 * (sections.length - 1),
+  gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
     ease: "none",
     scrollTrigger: {
       trigger: scrollX,
       pin: true,
       scrub: true,
-      end: "+=2000",
+      end: () => "+=" + scrollX?.offsetWidth * 2,
     },
   });
 
