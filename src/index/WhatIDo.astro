@@ -1,3 +1,4 @@
+<!-- lO QUE OFREZCO -->
 <section id="servicios">
   <div class="relative mb-[20vw]">
     <div class="grid grid-cols-2 relative h-full">
@@ -77,57 +78,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-    import gsap from "gsap";
-    import SplitType from "split-type";
-    import { ScrollTrigger, TextPlugin } from "gsap/all";
-
-    gsap.registerPlugin(TextPlugin, ScrollTrigger);
-
-    const splitType = document.querySelectorAll(".reveal");
-
-    const underline = document.getElementById("underline");
-
-    const underLines = document.querySelectorAll(".underlines");
-
-    const servicios = document.getElementById("servicios");
-
-    splitType.forEach((char: any) => {
-      const text = new SplitType(char, { types: "chars,words" });
-
-      gsap.from(text.words, {
-        scrollTrigger: {
-          trigger: char,
-          scrub: true,
-          start: "top 65%",
-          end: "top 50%",
-        },
-        stagger: 0.3,
-        scaleY: 0,
-      });
-    });
-
-    gsap.from(underline, {
-      width: "0%",
-      scrollTrigger: {
-        trigger: servicios,
-        start: "top 80%",
-        end: "bottom 0%",
-        scrub: true,
-      },
-    });
-
-    underLines.forEach((line) => {
-      gsap.from(line, {
-        width: "0%",
-        scrollTrigger: {
-          trigger: line,
-          start: "top 80%",
-          end: "bottom 0%",
-          scrub: true,
-        },
-      });
-    });
-  </script>
 </section>
