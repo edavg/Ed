@@ -164,6 +164,51 @@ import { Image } from "astro:assets";
         </div>
       </div>
     </article>
+    <article class="w-full px-4 lg:px-16 flex-shrink-0">
+      <div
+        class="p-4 group grid max-w-2xl mx-auto place-items-center gap-y-6 border-[1px] border-yellow-50"
+      >
+        <h3 class="reveal text-2xl md:text-3xl">Asu, cultura y turismo</h3>
+        <div class="grid gap-6">
+          <div class="flex flex-col gap-y-2 text-sm md:text-base">
+            <p class="reveal line-clamp-2">
+              El Departamento de Turismo de la Municipalidad de Asunción fue
+              creado para coordinar con los distintos gremios del sector
+              turístico de la Ciudad de Asunción las acciones necesarias para
+              desarrollar el turismo local.
+            </p>
+            <div class="flex gap-x-2 transition-transform">
+              <Image
+                src={"/assets/next-js.svg"}
+                width={30}
+                height={30}
+                alt={"nextjs"}
+              />
+              <Image
+                src={"/assets/typescript.svg"}
+                width={30}
+                height={30}
+                alt={"typescript"}
+              />
+            </div>
+          </div>
+          <a
+            href="https://cultura.asuncion.gov.py/"
+            target="_blank"
+            class="w-full relative"
+          >
+            <Image
+              src={"/assets/proyectos/dgcyt.webp"}
+              width={600}
+              height={500}
+              alt={"Soler EAS"}
+              class="object-cover mx-auto w-full aspect-[6/2.5] filter brightness-95 hover:-translate-x-2 hover:-translate-y-2 transition-transform"
+            />
+            <div class="bg-textPrimary w-full absolute inset-0 -z-10"></div>
+          </a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 

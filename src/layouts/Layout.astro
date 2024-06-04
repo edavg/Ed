@@ -74,7 +74,7 @@ const { title } = Astro.props;
 
     <Nav />
     <!-- Main document -->
-    <main class="relative max-w-6xl mx-auto px-4 md:px-6">
+    <main class="relative max-w-6xl mx-auto px-4 md:px-6 min-h-screen">
       <slot />
     </main>
     <Footer />
@@ -85,7 +85,7 @@ const { title } = Astro.props;
 
       // Lenis scroll
       const lenis = new Lenis();
-      const raf = (time: any) => {
+      const raf = (time: number) => {
         lenis.raf(time);
 
         requestAnimationFrame(raf);
@@ -99,6 +99,8 @@ const { title } = Astro.props;
         let width = window.innerWidth;
         return width > 768 ? "inset(0 0 0 100%)" : "inset(0 50% 0 50%)";
       }
+
+      document.body.style.cursor = "wait";
 
       // Intro guardado en el sessionStorage
       // En caso de ya haber entrado, que no vuelva a mostrar la animación
@@ -117,8 +119,6 @@ const { title } = Astro.props;
 
         if (!sessionStorage.getItem("preload")) {
           sessionStorage.setItem("preload", "true");
-
-          document.body.style.cursor = "wait";
 
           const saludos = [
             "Welcome",
@@ -150,17 +150,18 @@ const { title } = Astro.props;
               if (currentSaludo >= saludos.length) {
                 clearInterval(saludoInterval);
 
-                const tl = gsap.timeline();
+                const tl = gsap.timeline({
+                  defaults: { ease: "expo", duration: 0.5 },
+                });
 
                 tl.to(preLoader, {
                   opacity: 0,
-                  duration: 0.5,
+
                   onComplete: () => {
                     preLoader.textContent = "Bienvenido";
                   },
                 }).to(preLoader, {
                   opacity: 1,
-                  duration: 0.5,
                 });
 
                 introDivs.forEach((div) => {
@@ -168,7 +169,6 @@ const { title } = Astro.props;
                     clipPath: GetSizes(),
                     overflow: "hidden",
                     delay: 1.5,
-                    duration: 0.5,
                     ease: "expo.in",
                     onComplete: () => {
                       intro.style.display = "none";
@@ -181,10 +181,9 @@ const { title } = Astro.props;
                 tl.from(".ed", {
                   y: 60,
                   delay: 1,
-                  duration: 0.5,
                 }).from('[data-intro="swipe"]', {
-                  clipPath: "inset(0 0 100% 100%)",
-                  duration: 0.5,
+                  opacity: 0,
+                  delay: 0.5,
                 });
               }
             }, 50);
@@ -202,50 +201,52 @@ const { title } = Astro.props;
       import SplitType from "split-type";
       import { ScrollTrigger, TextPlugin } from "gsap/all";
 
-      gsap.registerPlugin(TextPlugin, ScrollTrigger);
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
-      const splitType = document.querySelectorAll(".reveal");
+        const splitType = document.querySelectorAll(".reveal");
 
-      const underline = document.getElementById("underline");
+        const underline = document.getElementById("underline");
 
-      const underLines = document.querySelectorAll(".underlines");
+        const underLines = document.querySelectorAll(".underlines");
 
-      const servicios = document.getElementById("servicios");
+        const servicios = document.getElementById("servicios");
 
-      splitType.forEach((char: any) => {
-        const text = new SplitType(char, { types: "chars,words" });
+        splitType.forEach((char: any) => {
+          const text = new SplitType(char, { types: "chars,words" });
 
-        gsap.from(text.words, {
-          scrollTrigger: {
-            trigger: char,
-            scrub: true,
-            start: "top 65%",
-            end: "top 50%",
-          },
-          stagger: 0.3,
-          scaleY: 0,
+          gsap.from(text.words, {
+            scrollTrigger: {
+              trigger: char,
+              scrub: true,
+              start: "top 65%",
+              end: "top 50%",
+            },
+            stagger: 0.3,
+            scaleY: 0,
+          });
         });
-      });
 
-      gsap.from(underline, {
-        width: "0%",
-        scrollTrigger: {
-          trigger: servicios,
-          start: "top 80%",
-          end: "bottom 0%",
-          scrub: true,
-        },
-      });
-
-      underLines.forEach((line) => {
-        gsap.from(line, {
+        gsap.from(underline, {
           width: "0%",
           scrollTrigger: {
-            trigger: line,
+            trigger: servicios,
             start: "top 80%",
             end: "bottom 0%",
             scrub: true,
           },
+        });
+
+        underLines.forEach((line) => {
+          gsap.from(line, {
+            width: "0%",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 80%",
+              end: "bottom 0%",
+              scrub: true,
+            },
+          });
         });
       });
     </script>
